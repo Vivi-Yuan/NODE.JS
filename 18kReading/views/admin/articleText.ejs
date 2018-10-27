@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<% articles.forEach(function(val){ %>
+	<title><%= val.title %></title>
+	<% }) %>
+</head>
+<body>
+<div class="container" id="articleText">
+	<div class="row">
+		<% articles.forEach(function(val){ %>
+			<div class="article-title col-md-12">
+				<h2><%= val.title %></h2>
+				<span>作者：<a href="#"><%= val.author %></a></span>
+				<span>发布时间 ：<%= val.ctime.toLocaleString() %></span>
+			</div>
+			<div class="article-content col-md-12"><%- val.content %></div>
+		<% }) %>
+	</div>
+</div>
+
+<div id="toTop" class="hidden-xs hidden-sm" title="回到顶部"><i class="glyphicon glyphicon-arrow-up"></i></div>
+
+<script>
+	$(function(){
+		$(window).scroll(function(){//滚动条事件
+	        //获取滚动条的滑动距离
+	        var scroH = $(this).scrollTop()*2;
+	        if(scroH>document.documentElement.clientHeight){
+	            $('#toTop').css('opacity','1');//显示
+	        }else{
+	            $('#toTop').css('opacity','0');//隐藏
+	        }
+	    })
+
+	    $('#toTop').click(function(){
+			$('html').animate({scrollTop:0},500);
+		})
+	})
+</script>
+</body>
+</html>

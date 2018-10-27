@@ -1,0 +1,70 @@
+<% include header %>
+
+<!-- 轮播板块 -->
+<div class="container brandrun" id="whiteround">
+	<div class="run col-md-8 col-sm-12">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<div class="item active">
+						<img src="/images/run1.png">
+					</div>
+				</div>
+				<div class="item">
+					<div class="item active">
+						<img src="/images/run2.png">
+					</div>
+				</div>
+			</div>
+			<!-- Wrapper for slides end-->
+		</div>
+	</div>
+
+	<!-- 推荐文章 -->
+	<div class="col-md-4 col-sm-12">
+		<div class="page-header recommend">
+		    <h4>推荐</h4>
+		</div>
+		<% items.forEach(function(val,m){ %>
+			<% if(m<5){ %>
+				<% val.articlelist.forEach(function(articledata,n){ %>
+					<% if(n<1){ %>
+						<div class="page-header">
+						    <a href="/details/<%= articledata._id %>" class="articletitle" target="_blank">
+						    	<span title="<%= articledata.title %>">[<%= val.name %>]<%= articledata.title %></span>
+								<small class="pull-right"><%= articledata.author %></small>
+							</a>
+						</div>
+					<% } %>
+				<% }) %>
+			<% } %>
+		<% }) %>
+	</div>
+	<!-- 推荐文章 END-->
+</div>
+<!-- 轮播板块 -->
+
+<!-- 文章板块 -->
+<div class="container articlemodel" id="whiteround">
+	<div class="row">
+		<%items.forEach(function(val){ %>
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="page-header recommend">
+			    <h4><%=val.name%></h4>
+			</div>
+			<div class="page-header">
+				<% val.articlelist.forEach(function(articledata){ %>
+			    <a href='/details/<%= articledata._id %>' class="articletitle table" target="_blank">
+			    	<span title="<%=articledata.title%>"><%=articledata.title%></span>
+					<small class="pull-right"><%=articledata.author%></small>
+				</a>
+				<% }) %>
+			</div>
+		</div>
+		<% }) %>
+	</div>
+</div>
+<!-- 文章板块 END -->
+
+<% include footer %>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>18k阅读网 - Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/ico" href="http://tattek.com/minimal/assets/images/favicon.ico" />
+    <!-- Bootstrap -->
+    <link href="/assets/css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="/assets/css/vendor/bootstrap-checkbox.css" rel="stylesheet">
+    <link href="/assets/css/minimal.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+  </head>
+  <body class="bg-1">
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <!-- Make page fluid -->
+      <div class="row">
+        <!-- Page content -->
+        <div id="content" class="col-md-12 full-page login">
+
+          <div class="inside-block">
+            <img src="/assets/images/logo-big.png" alt class="logo">
+            <h1><strong>Welcome</strong> 18k阅读网</h1>
+            <h5>18kReading Admin Theme</h5>
+            <br>
+            <div class="col-sm-12" class="want">
+              <p style="color:#F00"><%= error %></p>
+            </div>
+            <form id="form-signin" class="form-signin" action="/admin/doLogin" method="post">
+              <section>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="name" placeholder="Username">
+                  <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                </div>
+                <div class="input-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                  <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                </div>
+                <div class="input-group">
+					<input class="form-control" type="text" name="code" placeholder="请输入验证码">
+					<span class="input-group-addon" id="basic-addon2">
+						<a href="/admin/adminAdd"><img src="/admin/code"></a>
+					</span>
+				</div>
+              </section>
+              <section class="controls">
+                <div class="checkbox check-transparent">
+                  <input type="checkbox" value="1" id="remember" checked>
+                  <label for="remember">Remember me</label>
+                </div>
+              </section>
+              <section class="log-in">
+                <button class="btn btn-greensea">Log In</button>
+              </section>
+            </form>
+          </div>
+        </div>
+        <!-- /Page content -->
+      </div>
+    </div>
+    <!-- Wrap all page content end -->
+  </body>
+</html>

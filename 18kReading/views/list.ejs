@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>18k阅读网-全部文章</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/js/jquery.1.12.4.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="allArticles">
+	<!-- 顶部导航 -->
+	<div id="indexNav">
+	    <div class="container">
+			<nav class="navbar" id="navbar1">
+			    <div class="navbar-brand nav navbar-nav navbar-left">
+			        <div>
+			        	<a href="#" class="brand-a1">18k阅读网</a>
+						<a class="brand-a2" href="#">www.18kReading.com</a>
+			        </div>
+			    </div>
+			    <form class="navbar-form navbar-left searchbook" method="get" action="/search">
+			        <div class="form-group">
+			          	<input type="text" class="form-control" placeholder="人生苦长，要和甜的人在..." name="keyword">
+			          	<button class="hidden-sm hidden-xs" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+			        </div>
+			    </form>
+			    <ul class="navbar-nav navbar-right" id="allmenu">
+    				<div class="dropdown">
+					    <div class="dropdown-toggle col-sm-12" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    	<i class="glyphicon glyphicon-list"></i> 全部分类
+					    	<span class="caret"></span>
+					    </div>
+					  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="dropdownMenu2">
+					    	<% items.forEach(function(val){ %>
+						        <li><a href="/alist/<%=val._id%>"><%=val.name%></a></li>
+					      	<% }) %>
+						</ul>
+					</div>
+		        </ul>
+			</nav>
+	    </div>
+    <!-- 顶部导航 END -->
+    </div>
+
+    <!-- 花 -->
+    <div class="hidden-sm hidden-xs">
+    	<div class="pull-left flower-left"></div>
+		<div class="pull-right flower-right"></div>
+    </div>
+
+    <!-- 路径导航 -->
+	<ol class="breadcrumb container">
+	    <li><a href="/">首页</a></li>
+	    <li class="active">文章列表</li>
+	</ol>
+	<!-- 路径导航 end -->
+
+	<!-- 数据列表 -->
+	<div class="container" id="allArticle">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table articleList">
+				<tr id="nohover">
+					<th>序号</th>
+					<th>文章标题</th>
+					<th>文章分类</th>
+					<th>作者</th>
+					<th>发布时间</th>
+				</tr>
+				<% articles.forEach(function(val,i){ %>
+				<tr>
+					<td><%= i+1 %></td>
+					<td><a href="/details/<%= val._id %>" target="_blank"><%= val.title %></a></td>
+					<td><%= val.itemId.name %></td>
+					<td><a href="#"><%= val.author %></a></td>
+					<td><%= val.ctime.toLocaleString() %></td>
+				</tr>
+				<% })%>
+			</table>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+			<!-- 分页 -->
+			<nav aria-label="Page navigation">
+			    <ul class="pagination">
+			    	<li><a href="/list/<%= myId %>" aria-label="Previous">首页</a></li>
+				    <li>
+					    <a href="/list/<%= myId %>?page=<%=page-1%>" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					    </a>
+				    </li>
+					<% for(var i=1;i<=maxPage;i++){ %>
+				    	<li><a href="/list/<%= myId %>?page=<%=i%>"><%= i %></a></li>
+					<% } %>
+				    <li>
+				        <a href="/list/<%= myId %>?page=<%=-(-page-1)%>" aria-label="Next">
+				        	<span aria-hidden="true">&raquo;</span>
+				        </a>
+				    </li>
+				    <li><a href="/list/<%= myId %>?page=<%= maxPage %>" aria-label="Previous">尾页</a></li>
+			    </ul>
+			</nav>
+			<!-- 分页 END -->
+		</div>
+	</div>
+
+<% include footer %>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% articles.forEach(function(val){ %>
+<title>18k阅读网-<%= val.title %></title>
+<% }) %>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/js/jquery.1.12.4.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="details">
+		<!-- 顶部导航 -->
+		<div id="indexNav">
+		    <div class="container">
+				<nav class="navbar" id="navbar1">
+				    <div class="navbar-brand nav navbar-nav navbar-left">
+				        <div>
+				        	<a href="#" class="brand-a1">18k阅读网</a>
+							<a class="brand-a2" href="#">www.18kReading.com</a>
+				        </div>
+				    </div>
+				    <form class="navbar-form navbar-left searchbook" method="get" action="/search">
+				        <div class="form-group">
+				          	<input type="text" class="form-control" placeholder="人生苦长，要和甜的人在..." name="keyword">
+				          	<button class="hidden-sm hidden-xs" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				        </div>
+				    </form>
+				    <ul class="navbar-nav navbar-right" id="allmenu">
+	    				<div class="dropdown">
+						    <div class="dropdown-toggle col-sm-12" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    	<i class="glyphicon glyphicon-list"></i> 全部分类
+						    	<span class="caret"></span>
+						    </div>
+						  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="dropdownMenu2">
+						  		<li><a href="/">首页</a></li>
+						    	<% items.forEach(function(val){ %>
+							        <li><a href="#"><%=val.name%></a></li>
+						      	<% }) %>
+						      	<li><a href="/list" class="itemtitle">全部文章</a></li>
+							</ul>
+						</div>
+			        </ul>
+				</nav>
+		    </div>
+	    <!-- 顶部导航 END -->
+	    </div>
+
+	    <!-- 花 -->
+	    <div class="hidden-sm hidden-xs">
+	    	<div class="pull-left flower-left"></div>
+			<div class="pull-right flower-right"></div>
+	    </div>
+
+		<div class="container" id="articleText">
+			<div class="row">
+				<% articles.forEach(function(val){ %>
+					<div class="article-title col-md-12">
+							<h2 href="/articles/<%= val._id %>"><%= val.title %></h2>
+						<span>作者：<a href="#"><%= val.author %></a></span>
+						<span>发布时间 ：<%= val.ctime.toLocaleString() %></span>
+					</div>
+					<div class="article-content col-md-12"><%-val.content%></div>
+				<% }) %>
+			</div>
+		</div>
+
+
+		<div id="toTop" class="hidden-xs hidden-sm" title="回到顶部"><i class="glyphicon glyphicon-arrow-up"></i></div>
+		<script>
+			$(function(){
+				$(window).scroll(function(){//滚动条事件
+			        //获取滚动条的滑动距离
+			        var scroH = $(this).scrollTop()*2;
+			        if(scroH>document.documentElement.clientHeight){
+			            $('#toTop').css('opacity','1');//回到顶部显示
+			        }else{
+			            $('#toTop').css('opacity','0');//回到顶部隐藏
+			        }
+			    })
+
+			    $('#toTop').click(function(){
+					$('html').animate({scrollTop:0},500);
+				})
+			})
+		</script>
+<% include footer %>

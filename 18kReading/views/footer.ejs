@@ -1,0 +1,27 @@
+		<!-- 友情链接 -->
+	    <div class="container friendshiplinks">
+			<div class="row">
+			    <div class="col-md-12">
+			  		<span><strong>友情链接：</strong></span>
+				    <span>
+				    	<% link.forEach(function(val){ %>
+					  		<a href="<%= val.addr %>" class="flink"><%= val.name %></a> |
+					  	<% }) %>
+				    </span>
+				</div>
+			</div>
+	    </div>
+	    <!-- 友情链接 END -->
+
+		<!-- 尾部 -->
+		<footer id="indexFooter">
+			<div class="container indexfooter">
+				<p>Copyright © 2018 www.18kReading.com All Rights Reserved版权所有 vivi</p>
+				<p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何色情小说，一经发现，即作删除！</p>
+				<p>本站所收录作品、社区话题、书库评论及本站所做之广告均属个人行为，与本站立场无关</p>
+			</div>
+		</footer>
+		<!-- 尾部 END -->
+	</div>
+</body>
+</html>

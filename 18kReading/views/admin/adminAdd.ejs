@@ -1,0 +1,58 @@
+<!-- 引入 公用的头部 模版 -->
+<% include header %>
+	<!-- 路径导航 -->
+	<ol class="breadcrumb">
+	  <li><a href="#">系统管理</a></li>
+	  <li class="active">添加管理员</li>
+	</ol>
+	<!-- 路径导航 end -->
+
+	<!-- 添加数据的表单 -->
+	<div class="row">
+		<div class="col-md-4 col-sm-2 col-xs-0"></div>
+		<div class="col-md-4 col-sm-8 col-xs-12">
+			<form class="formAdd" action="/admin/adminInsert" method="post">
+				<div class="input-group">
+				  <span class="input-group-addon">用户账号</span>
+				  <input type="text" class="form-control" name="name">
+				</div>
+
+				<div class="input-group">
+				  <span class="input-group-addon">用户密码</span>
+				  <input type="password" class="form-control" name="password">
+				</div>
+
+				<div class="input-group">
+				  <span class="input-group-addon">确认密码</span>
+				  <input type="password" class="form-control" name="repassword">
+				</div>
+
+				<div class="input-group">
+				  <span class="input-group-addon">用户简介</span>
+				  <input type="text" class="form-control" name="info">
+				</div>
+
+				<div class="input-group">
+				  <span class="input-group-addon">联系电话</span>
+				  <input type="text" class="form-control" name="tel">
+				</div>
+
+				<div class="input-group">
+				  	<span class="input-group-addon">验&nbsp;证&nbsp;码</span>
+					<input class="form-control" type="text"  name="code">
+					<span class="input-group-addon" id="basic-addon2">
+						<a href="/admin/adminAdd"><img  src="/admin/code"></a>
+					</span>
+				</div>
+
+				<div class="input-group">
+					<input type="submit" value="确认添加" class="btn btn-default">
+				</div>
+
+			</form>
+		</div>
+		<div class="col-md-4 col-sm-2 col-xs-0"></div>
+	</div>
+
+<!-- 引入 公用的底部 模版 -->
+<% include footer %>
